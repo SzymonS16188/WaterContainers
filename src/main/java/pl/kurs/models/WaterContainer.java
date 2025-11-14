@@ -7,6 +7,15 @@ public class WaterContainer {
 
 
     public WaterContainer(String name, double maxCapacity, double waterLevel) {
+        if(maxCapacity <= 0) {
+            throw new RuntimeException("Błędna pojemność!");
+        }
+        if (waterLevel < 0){
+            throw new RuntimeException("Ilość wody nie powinna być mniejsza niż 0");
+        }
+        if (maxCapacity< waterLevel){
+            throw new RuntimeException("W tym pojemniku nie zmieści się tyle wody");
+        }
         this.name = name;
         this.maxCapacity = maxCapacity;
         this.waterLevel = waterLevel;
