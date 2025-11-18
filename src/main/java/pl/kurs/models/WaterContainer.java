@@ -50,6 +50,16 @@ public class WaterContainer {
         }
     }
 
+    public void subtractWater(double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if (waterLevel - value < 0) {
+            System.out.println("Nie można odlać takiej ilości wody ze zbiornika.");
+        } else {
+            waterLevel -= value;
+        }
+    }
+
 
 
     @Override
