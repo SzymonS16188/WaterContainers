@@ -43,7 +43,7 @@ public class WaterContainer {
     public void addWater(double value){
         if (value <= 0){
             System.out.println("Wartość powinna być większa od 0.");
-        } else if (value + waterLevel > maxCapacity){
+        } else if (!addingIsPossible(value)){
             System.out.println("Nie można dolać tej ilośći wody do zbiornika.");
         } else {
             waterLevel += value;
@@ -53,11 +53,35 @@ public class WaterContainer {
     public void subtractWater(double value){
         if (value <= 0){
             System.out.println("Wartość powinna być większa od 0.");
-        } else if (waterLevel - value < 0) {
+        } else if (!subtractIsPossible(value)) {
             System.out.println("Nie można odlać takiej ilości wody ze zbiornika.");
         } else {
             waterLevel -= value;
         }
+    }
+
+    public void pourWater(WaterContainer source, double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if(!(source.subtractIsPossible(value)) || !this.addingIsPossible(value)) {
+            System.out.println("Operacja nie jest możliwa do zrealizowania.");
+        } else{
+            source.waterLevel -= value;
+            this.waterLevel += value;
+
+        }
+
+
+    }
+
+
+    private boolean addingIsPossible(double value) {
+        return value + waterLevel <= maxCapacity;
+    }
+
+
+    private boolean subtractIsPossible(double value){
+        return waterLevel - value >= 0;
     }
 
 
