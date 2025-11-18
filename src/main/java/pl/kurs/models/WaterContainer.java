@@ -13,7 +13,7 @@ public class WaterContainer {
         if (waterLevel < 0){
             throw new RuntimeException("Ilość wody nie powinna być mniejsza niż 0");
         }
-        if (maxCapacity< waterLevel){
+        if (maxCapacity < waterLevel){
             throw new RuntimeException("W tym pojemniku nie zmieści się tyle wody");
         }
         this.name = name;
@@ -38,6 +38,53 @@ public class WaterContainer {
     public void setWaterLevel(double waterLevel) {
         this.waterLevel = waterLevel;
     }
+
+
+    public void addWater(double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if (!addingIsPossible(value)){
+            System.out.println("Nie można dolać tej ilośći wody do zbiornika.");
+        } else {
+            waterLevel += value;
+        }
+    }
+
+    public void subtractWater(double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if (!subtractIsPossible(value)) {
+            System.out.println("Nie można odlać takiej ilości wody ze zbiornika.");
+        } else {
+            waterLevel -= value;
+        }
+    }
+
+    public void pourWater(WaterContainer source, double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if(!(source.subtractIsPossible(value)) || !this.addingIsPossible(value)) {
+            System.out.println("Operacja nie jest możliwa do zrealizowania.");
+        } else{
+            source.waterLevel -= value;
+            this.waterLevel += value;
+
+        }
+
+
+    }
+
+
+    private boolean addingIsPossible(double value) {
+        return value + waterLevel <= maxCapacity;
+    }
+
+
+    private boolean subtractIsPossible(double value){
+        return waterLevel - value >= 0;
+    }
+
+
 
     @Override
     public String toString() {
