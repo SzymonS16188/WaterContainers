@@ -13,7 +13,7 @@ public class WaterContainer {
         if (waterLevel < 0){
             throw new RuntimeException("Ilość wody nie powinna być mniejsza niż 0");
         }
-        if (maxCapacity< waterLevel){
+        if (maxCapacity < waterLevel){
             throw new RuntimeException("W tym pojemniku nie zmieści się tyle wody");
         }
         this.name = name;
@@ -38,6 +38,19 @@ public class WaterContainer {
     public void setWaterLevel(double waterLevel) {
         this.waterLevel = waterLevel;
     }
+
+
+    public void addWater(double value){
+        if (value <= 0){
+            System.out.println("Wartość powinna być większa od 0.");
+        } else if (value + waterLevel > maxCapacity){
+            System.out.println("Nie można dolać tej ilośći wody do zbiornika.");
+        } else {
+            waterLevel += value;
+        }
+    }
+
+
 
     @Override
     public String toString() {
