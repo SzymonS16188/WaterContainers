@@ -29,7 +29,6 @@ public class WaterContainerService {
         return maxWaterContainer;
     }
 
-    //- znalezc zbiornik ktory jest najbardziej zapelniony (procentowo) - praca domowa
     //- znalezc wszystkie puste zbiorniki. - praca domowa
 
     public static WaterContainer findTheMostFilledContainerInPercentage(WaterContainer[] array) {
@@ -57,9 +56,9 @@ public class WaterContainerService {
             mostFilledRatio = mostFilledContainer.getWaterLevel() / mostFilledContainer.getMaxCapacity();
         }
 
-        if (mostFilledContainer != null ) {
+        if (mostFilledContainer != null) {
             for (int i = counter; i < array.length; i++) {
-                if (array[i] != null){
+                if (array[i] != null) {
                     double ratio = array[i].getWaterLevel() / array[i].getMaxCapacity();
                     if (ratio > mostFilledRatio) {
                         mostFilledContainer = array[i];
@@ -77,6 +76,35 @@ public class WaterContainerService {
         }
 
         return mostFilledContainer;
+    }
+
+
+    public static WaterContainer[] findAllEmptyContainers(WaterContainer[] array) {
+        if (array == null) {
+            return null;
+        }
+
+        int emptyContainersCounter = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].getWaterLevel() == 0 ){
+                emptyContainersCounter++;
+            }
+        }
+
+        WaterContainer[] emptyContainers = new WaterContainer[emptyContainersCounter];
+        int index = 0;
+
+
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].getWaterLevel() == 0){
+                emptyContainers[index] = array[i];
+                index++;
+            }
+        }
+
+
+        return emptyContainers;
     }
 
 
