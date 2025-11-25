@@ -29,51 +29,43 @@ public class WaterContainerService {
         return maxWaterContainer;
     }
 
-    //- znalezc wszystkie puste zbiorniki. - praca domowa
 
-    public static WaterContainer findTheMostFilledContainerInPercentage(WaterContainer[] array) {
+    public static WaterContainer findTheMostFilledContainer(WaterContainer[] array) {
         if (array == null) {
             return null;
         }
 
         WaterContainer mostFilledContainer = null;
-//        double mostFilledRatio = 0;
+
 
         int counter = 0;
         do {
             mostFilledContainer = array[counter];
             counter++;
-//            mostFilledRatio = mostFilledContainer.getWaterLevel()/mostFilledContainer.getMaxCapacity();
+
         } while (mostFilledContainer == null && counter < array.length);
 
 
-//        double mostFilledRatio = mostFilledContainer.getWaterLevel() / mostFilledContainer.getMaxCapacity();
         double mostFilledRatio = 0;
         int counter2 = 0;
         if (mostFilledContainer == null) {
             return null;
-        } else {
-            mostFilledRatio = mostFilledContainer.getWaterLevel() / mostFilledContainer.getMaxCapacity();
         }
 
-        if (mostFilledContainer != null) {
-            for (int i = counter; i < array.length; i++) {
-                if (array[i] != null) {
-                    double ratio = array[i].getWaterLevel() / array[i].getMaxCapacity();
-                    if (ratio > mostFilledRatio) {
-                        mostFilledContainer = array[i];
-                        mostFilledRatio = ratio;
-                    }
+        mostFilledRatio = mostFilledContainer.getWaterLevel() / mostFilledContainer.getMaxCapacity();
+
+
+        for (int i = counter; i < array.length; i++) {
+            if (array[i] != null) {
+                double ratio = array[i].getWaterLevel() / array[i].getMaxCapacity();
+                if (ratio > mostFilledRatio) {
+                    mostFilledContainer = array[i];
+                    mostFilledRatio = ratio;
                 }
-
-//            for (WaterContainer wc : array) {
-//                double ratio = wc.getWaterLevel() / wc.getMaxCapacity();
-//                if (ratio > mostFilledRatio){
-//                    mostFilledContainer = wc;
-//                    mostFilledRatio = ratio;
-//                }
             }
+
         }
+
 
         return mostFilledContainer;
     }
@@ -86,7 +78,7 @@ public class WaterContainerService {
 
         int emptyContainersCounter = 0;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != null && array[i].getWaterLevel() == 0 ){
+            if (array[i] != null && array[i].getWaterLevel() == 0) {
                 emptyContainersCounter++;
             }
         }
@@ -95,9 +87,8 @@ public class WaterContainerService {
         int index = 0;
 
 
-
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != null && array[i].getWaterLevel() == 0){
+            if (array[i] != null && array[i].getWaterLevel() == 0) {
                 emptyContainers[index] = array[i];
                 index++;
             }
