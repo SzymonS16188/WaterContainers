@@ -6,8 +6,8 @@ należy stworzyć następujące operacje:
 - void przelanieWody(skad, ile) - przelewa wode ze zbiornika skąd do naszego (pod warunkiem, że przelew jest możliwy)
 stworz metody ktore pozwalaja:
 - znalezc zbiornik w ktorym jest najwiecej wody
-- znalezc zbiornik ktory jest najbardziej zapelniony
-- znalezc wszystkie puste zbiorniki.
+- znalezc zbiornik ktory jest najbardziej zapelniony - praca domowa
+- znalezc wszystkie puste zbiorniki. - praca domowa
 
 
 Każda operacja na zbiorniku jest rejestrowana,
